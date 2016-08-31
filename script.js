@@ -1,9 +1,16 @@
 var n;
 var orbX, orbX_CS;
+var orientation;
 
 var start = function() {
 	generator();
 	var main = setInterval(function(){ alterations(); }, 8000);
+
+	if (window.innerHeight > window.innerWidth) {
+		orientation = "portrait";
+	} else {
+		orientation = "landscape";
+	}
 }
 
 var generator = function() {
@@ -39,7 +46,13 @@ var positioning = function() {
 }
 
 var sizing = function() {
-	var orbWidth = Math.floor((Math.random() * (window.innerWidth/2))) + "px";
+	
+	if (orientation == "portrait") {
+		var orbWidth = Math.floor((Math.random() * (window.innerWidth/2))) + "px";
+	} else {
+		var orbWidth = Math.floor((Math.random() * (window.innerHeight/2))) + "px";
+	}
+
 	orbX.style.width = orbWidth;
 	orbX.style.height = orbWidth;
 	orbX.style.opacity = parseFloat(Math.random()).toFixed(2);
@@ -58,13 +71,14 @@ var transitions = function() {
 	var ran0 = parseFloat(Math.random() * 15 + 5).toFixed(0);
 	var ran1 = parseFloat(Math.random() * 10).toFixed(0);
 	var ran2w = parseFloat(Math.random() * 20).toFixed(0);
+	var ran3 = parseFloat(Math.random() * 20).toFixed(0);
 	var windProportions = parseFloat(window.innerHeight / window.innerWidth).toFixed(2);
 	
 	// console.log(windProportions);
 	
 	
 
-	if (window.innerHeight > window.innerWidth) {
+	if (orientation == "portrait") {
 		ran2h = ran2w / windProportions;
 		console.log("portrait");
 	} else {
@@ -74,7 +88,8 @@ var transitions = function() {
 
 	orbX.style.transition = "left " + ran0 + "s, " + "top " + ran0 + "s, " 
 		+ "opacity " + ran1 + "s, " 
-		+  "width " + ran2w + "s, " + "height " + ran2h + "s " 
+		+ "width " + ran2w + "s, " + "height " + ran2h + "s, " 
+		+ "background-color " + ran3 + "s "
 		+ "linear";
 	// console.log("left " + ran0 + "s, " + "top " + ran0 + "s, " + "opacity " + ran1 + "s " + "linear");
 	// console.log(orbX.style.transition);

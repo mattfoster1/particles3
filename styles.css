@@ -4,6 +4,8 @@ body, html {
 
 	margin: 0;
 	padding: 0;
+
+	overflow: hidden;
 }
 
 body, html, #main, .orb {
@@ -26,7 +28,7 @@ body, html, #main, .orb {
 	/*height: 0px;*/
 
 	border-radius: 100%;
-	background-color: lightblue;
+	/*background-color: lightblue;*/
 
 	/*transition: left 0.2s, top 2s;*/
 }
