@@ -13,7 +13,7 @@ var start = function() {
 	}
 }
 
-var generator = function() {
+var generator = function() { //generates bubble elements
 	
 	for (n=0; n < 10; n++) {	
 		var orbCont0 = document.getElementById("orbCont0");
